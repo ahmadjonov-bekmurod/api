@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% block subject %} Account activation on DailyTask.com {% endblock subject %}
+{% load static %}
+{% block html_body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        body {
+          color: #000;
+        }
+        .tittle {
+        color: #000;
+        text-align: center;
+        }
+
+        .mainText {
+          font-size: 30px;
+          padding-bottom: 40px;
+          font-weight: 700;
+          margin-top: 10px;
+          text-align: left;
+        }
+
+        .texts p {
+          font-family: Kanit;
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 37.38px;
+          text-align: left;
+
+        }
+
+        .verify-btn {
+          background-color: #000;
+          color: #fff;
+          padding: 10px 20px;
+          text-decoration: none;
+          font-weight: bold;
+          border-radius: 5px;
+          display: flex;
+          width: 300px;
+          justify-content: center;
+          transition: 0.2s ease-in-out;
+          margin-top: 25px;
+          margin-left: -80px;
+        }
+
+        .verify-btn:hover {
+          background-color: gray;
+          color: rgb(255, 255, 255);
+          border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="tittle"> 🎯Daily Tasks</div>
+    <div class="main-center">
+        <div class="content">
+          <div class="box">
+            <div class="texts">
+              <div class="mainText">Email Verification</div>
+              <p>
+                <span>Hi User,</span> <br /> You received this Email Message to
+                Activate Your Account on DailyTasks.com.
+              </p>
+              <br />
+              <p>Press the button to verify your Email.</p>
+            </div>
+          </div>
+          <div class="button_btn">
+            <button class="verify-btn">
+              Verify Email
+            </button>
+          </div>
+        </div>
+      </div>
+</div>
+</body>
+</html>
+{% endblock %}
