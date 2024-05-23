@@ -22,6 +22,7 @@ urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
     path('auth/', include('djoser.social.urls')),
+    path('', include('accounts.urls')),
     path('swagger', schema_view.with_ui(
         'swagger', cache_timeout=0)),
     path('redoc', schema_view.with_ui(
