@@ -4,10 +4,12 @@ from django.contrib.auth.tokens import default_token_generator
 from djoser import utils
 from djoser.conf import settings
 
+from configs import temp_name
+
 
 class ActivationEmail(email.ActivationEmail):
     # template_name = 'C:\\Users\\ahmad\\OneDrive\\Ishchi stol\\API\\api\\authsystem\\accounts\\templates\\index.html'
-    template_name = '/home/djangoapibekmurod/api/authsystem/accounts/templates/index.html'
+    template_name = temp_name
 
     def get_context_data(self):
         context = super().get_context_data()
@@ -22,7 +24,7 @@ class ActivationEmail(email.ActivationEmail):
 
 class PasswordResetEmail(email.PasswordResetEmail):
     # template_name = 'C:\\Users\\ahmad\\OneDrive\\Ishchi stol\\API\\api\\authsystem\\accounts\\templates\\index.html'
-    template_name = '/home/djangoapibekmurod/api/authsystem/accounts/templates/index.html'
+    template_name = temp_name
 
     def get_context_data(self):
         context = super().get_context_data()
