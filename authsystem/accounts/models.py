@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-
+from configs import upload_dir
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -77,7 +77,7 @@ class ToDo(models.Model):
 class AudioFile(models.Model):
     name = models.CharField(max_length=255)
     file = models.FileField(
-        upload_to='C:\\Users\\ahmad\\OneDrive\\Ishchi stol\\API\\api\\authsystem\\staticfiles\\audios')
+        upload_to=upload_dir)
 
     def __str__(self):
         return self.name
