@@ -32,7 +32,9 @@ class UserAccountManager(BaseUserManager):
 class UserAccount(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=255, unique=True)
     first_name = models.CharField(max_length=255)
-    # last_name = models.CharField(max_length=255)
+    sound = models.ForeignKey('AudioFile', on_delete=models.SET_NULL, null=True, blank=True, default=0)
+    background_color = models.CharField(max_length=7, default='red')
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=True)
@@ -66,6 +68,16 @@ class ToDo(models.Model):
     completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(UserAccount, on_delete=models.CASCADE, related_name='todos', default=None)
 
     def __str__(self):
         return self.title
+
+
+class AudioFile(models.Model):
+    name = models.CharField(max_length=255)
+    file = models.FileField(
+        upload_to='C:\\Users\\ahmad\\OneDrive\\Ishchi stol\\API\\api\\authsystem\\staticfiles\\audios')
+
+    def __str__(self):
+        return self.name

@@ -2,7 +2,7 @@ from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer,
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework import serializers
-from .models import ToDo
+from .models import ToDo, AudioFile
 
 User = get_user_model()
 
@@ -16,10 +16,9 @@ class UserCreateSerializer(BaseUserCreateSerializer):
 class UserSerializer(BaseUserSerializer):
     class Meta(BaseUserCreateSerializer.Meta):
         fields = ['id', 'first_name', 'email',
-                  'is_active',
+                  'is_active', 'sound', 'background_color'
                   ]
 
-    # this is where we send a request to slash me/ or auth/users
     def validate(self, attrs):
         validated_attr = super().validate(attrs)
         email = validated_attr.get('email')
@@ -41,3 +40,9 @@ class ToDoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ToDo
         fields = ['id', 'title', 'description', 'status', 'completed', 'created_at', 'updated_at']
+
+
+class AudioFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AudioFile
+        fields = ['id', 'name', 'file', 'uploaded_at']
